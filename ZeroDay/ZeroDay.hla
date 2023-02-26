@@ -1,0 +1,47 @@
+program Same;
+#include("stdlib.hhf")
+
+procedure isIncreasing(i: uns32; j: uns32; k: uns32); @nodisplay; @noframe;
+begin isIncreasing;
+    pop(EDX);
+    pop(k);
+    pop(j);
+    pop(i);
+    push(EDX);
+    mov(k, EBX);
+    cmp(j, EBX);
+    jbe ReturnMid;
+    jmp ReturnZero;
+    ReturnMid:
+    push(EDX);
+    mov(j, EBX);
+    cmp(i, EBX);
+    jbe ReturnTrue;
+    jmp ReturnZero;
+    ReturnTrue:
+        mov(1, AL);
+        ret();
+    ReturnZero:
+        mov(0, AL);
+        ret();
+end isIncreasing;
+
+begin Same;
+    stdout.put("Feed Me i: ");
+    stdin.getu32();
+    push(EAX);
+    stdout.put("Feed Me j: ");
+    stdin.getu32();
+    push(EAX);
+    stdout.put("Feed Me k: ");
+    stdin.getu32();
+    push(EAX);
+    call isIncreasing;
+    cmp(AL, 1);
+    jne NumbersAreDifferent;
+        stdout.put("EAX = 1");
+        jmp EndProgram;
+    NumbersAreDifferent:
+        stdout.put("EAX = 0");
+    EndProgram:
+end Same;

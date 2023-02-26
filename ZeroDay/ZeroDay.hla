@@ -13,11 +13,11 @@ begin isIncreasing;
     jbe ReturnMid;
     jmp ReturnZero;
     ReturnMid:
-    push(EDX);
-    mov(j, EBX);
-    cmp(i, EBX);
-    jbe ReturnTrue;
-    jmp ReturnZero;
+        push(EDX);
+        mov(j, EBX);
+        cmp(i, EBX);
+        jbe ReturnTrue;
+        jmp ReturnZero;
     ReturnTrue:
         mov(1, AL);
         ret();
@@ -39,8 +39,8 @@ begin Same;
     call isIncreasing;
     cmp(AL, 1);
     jne NumbersAreDifferent;
-        stdout.put("EAX = 1");
-        jmp EndProgram;
+    stdout.put("EAX = 1");
+    jmp EndProgram;
     NumbersAreDifferent:
         stdout.put("EAX = 0");
     EndProgram:
